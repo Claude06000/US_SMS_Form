@@ -38,5 +38,6 @@ export default defineNuxtConfig({
     resendApiKey: '',
     recipientEmail: '',
     senderEmail: 'noreply@noviamind.ai',
+    senderEmailName: 'NoviaMind',
   },
 })

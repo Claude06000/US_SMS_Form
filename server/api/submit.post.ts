@@ -55,6 +55,8 @@ export default defineEventHandler(async (event) => {
   const resendApiKey = config.resendApiKey
   const recipientEmail = config.recipientEmail
   const senderEmail = config.senderEmail || 'noreply@noviamind.ai'
+  const senderEmailName = config.senderEmailName || 'NoviaMind'
+  const from = `${senderEmailName} <${senderEmail}>`
 
   if (!resendApiKey || !recipientEmail) {
     throw createError({
@@ -134,7 +136,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     await resend.emails.send({
-      from: senderEmail,
+      from,
       to: recipients,
       subject: `[Toll-Free US] Enregistrement — ${fields.companyName || 'Entreprise'}`,
       html,
