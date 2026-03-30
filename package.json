@@ -1,0 +1,28 @@
+{
+  "name": "us-sms-form",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^1.0.0",
+    "nuxt": "^4.4.2",
+    "radix-vue": "^1.9.17",
+    "resend": "^6.9.4",
+    "tailwind-merge": "^3.5.0",
+    "vue": "^3.5.30",
+    "vue-router": "^5.0.4"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^4.0.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}
