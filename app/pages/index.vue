@@ -31,14 +31,54 @@ const consent = ref(false)
 const isSubmitting = ref(false)
 const submitStatus = ref<'idle' | 'success' | 'error'>('idle')
 const errorMessage = ref('')
+const showConfirmation = ref(false)
 
-async function handleSubmit() {
+const REQUIRED_FIELDS: Record<string, string> = {
+  companyName: "Nom de l'entreprise",
+  businessAddress1: 'Adresse professionnelle (ligne 1)',
+  city: 'Ville',
+  zip: 'Code postal',
+  stateAbbreviation: 'Département',
+  countryIsoCode: 'Code pays ISO',
+  registrationNumber: "Numéro d'immatriculation",
+  registrationNumberType: "Type de document d'immatriculation",
+  contactFirstName: 'Prénom',
+  contactLastName: 'Nom',
+  contactEmail: 'Email professionnel',
+  contactPhone: 'Numéro de téléphone professionnel',
+}
+
+function validateForm(): boolean {
+  const missing = Object.entries(REQUIRED_FIELDS)
+    .filter(([key]) => !form.value[key as keyof typeof form.value]?.trim())
+    .map(([, label]) => label)
+
+  if (missing.length > 0) {
+    errorMessage.value = `Veuillez remplir les champs obligatoires suivants : ${missing.join(', ')}`
+    submitStatus.value = 'error'
+    return false
+  }
+
   if (!consent.value) {
     errorMessage.value = 'Veuillez accepter les conditions avant de soumettre.'
     submitStatus.value = 'error'
-    return
+    return false
   }
 
+  return true
+}
+
+function handleSubmitClick() {
+  if (!validateForm()) return
+  showConfirmation.value = true
+}
+
+function cancelSubmit() {
+  showConfirmation.value = false
+}
+
+async function confirmSubmit() {
+  showConfirmation.value = false
   isSubmitting.value = true
   submitStatus.value = 'idle'
   errorMessage.value = ''
@@ -109,7 +149,7 @@ async function handleSubmit() {
       </UiCardContent>
     </UiCard>
 
-    <form @submit.prevent="handleSubmit" class="space-y-6">
+    <form @submit.prevent="handleSubmitClick" class="space-y-6">
       <!-- Section 1: Company Information -->
       <UiCard>
         <UiCardHeader>
@@ -321,5 +361,27 @@ async function handleSubmit() {
         </UiCardContent>
       </UiCard>
     </form>
+
+    <!-- Confirmation modal -->
+    <Teleport to="body">
+      <div v-if="showConfirmation" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/50" @click="cancelSubmit" />
+        <UiCard class="relative z-10 max-w-md mx-4 shadow-xl">
+          <UiCardHeader>
+            <UiCardTitle class="text-lg">Confirmer l'envoi</UiCardTitle>
+          </UiCardHeader>
+          <UiCardContent class="space-y-4">
+            <p class="text-sm text-muted-foreground">
+              Êtes-vous sûr de vouloir soumettre cet enregistrement ?
+              Un email récapitulatif sera envoyé à <strong>{{ form.contactEmail }}</strong> ainsi qu'à notre équipe.
+            </p>
+            <div class="flex gap-3 justify-end">
+              <UiButton type="button" variant="outline" @click="cancelSubmit">Annuler</UiButton>
+              <UiButton type="button" variant="noviamind" @click="confirmSubmit">Confirmer</UiButton>
+            </div>
+          </UiCardContent>
+        </UiCard>
+      </div>
+    </Teleport>
   </div>
 </template>

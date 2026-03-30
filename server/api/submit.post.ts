@@ -127,10 +127,15 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  const recipients = [recipientEmail]
+  if (fields.contactEmail?.trim()) {
+    recipients.push(fields.contactEmail.trim())
+  }
+
   try {
     await resend.emails.send({
       from: senderEmail,
-      to: recipientEmail,
+      to: recipients,
       subject: `[Toll-Free US] Enregistrement — ${fields.companyName || 'Entreprise'}`,
       html,
     })
