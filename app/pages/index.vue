@@ -132,18 +132,18 @@ async function confirmSubmit() {
       </UiCardHeader>
       <UiCardContent class="text-sm text-muted-foreground leading-relaxed space-y-3">
         <p>
-          Les numéros Toll-Free US sont requis pour l'envoi de SMS transactionnels
+          L'enregistrement auprès des autorités de supervision est requis pour l'envoi de SMS transactionnels
           (confirmations de commande, notifications de compte, réinitialisations de mot de passe, etc.)
           à destination de destinataires aux États-Unis et au Canada.
         </p>
         <p>
           Veuillez remplir ce formulaire afin d'enregistrer votre entreprise et vous conformer
-          à la réglementation en vigueur pour l'envoi de SMS transactionnels via un numéro Toll-Free.
+          à la réglementation en vigueur pour l'envoi de SMS transactionnels.
         </p>
         <UiAlert variant="destructive" class="mt-3">
           <p class="font-medium">
             Sans enregistrement conforme, vos SMS transactionnels à destination des États-Unis
-            ou du Canada ne pourront pas être envoyés et seront suspendus.
+            ou du Canada ne pourront pas être envoyés.
           </p>
         </UiAlert>
       </UiCardContent>
@@ -337,7 +337,7 @@ async function confirmSubmit() {
               autorité de régulation ou équivalente. Noviamind traitera vos
               données personnelles conformément à la
               <a
-                href="https://noviamind.ai/privacy-policy"
+                href="https://noviamind.ai/fr/privacy-policy"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-noviamind-purple underline hover:text-noviamind-purple/80"
