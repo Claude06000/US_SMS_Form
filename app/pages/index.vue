@@ -126,23 +126,23 @@ async function confirmSubmit() {
       <UiCardHeader>
         <div class="flex items-center gap-3 mb-2">
           <div class="h-8 w-1 rounded-full bg-gradient-to-b from-[hsl(225.35,84%,49%)] via-[hsl(211.7,96.4%,78.4%)] to-[hsl(189.48,100%,43%)]" />
-          <UiCardTitle class="text-2xl">Enregistrement Numéro Toll-Free US — SMS</UiCardTitle>
+          <UiCardTitle class="text-2xl">Enregistrement Règlementaire — SMS vers Amérique du Nord</UiCardTitle>
         </div>
         <span class="text-xs text-muted-foreground ml-11">v4</span>
       </UiCardHeader>
       <UiCardContent class="text-sm text-muted-foreground leading-relaxed space-y-3">
         <p>
-          Les numéros Toll-Free US sont requis pour l'envoi d'emails transactionnels
+          Les numéros Toll-Free US sont requis pour l'envoi de SMS transactionnels
           (confirmations de commande, notifications de compte, réinitialisations de mot de passe, etc.)
           à destination de destinataires aux États-Unis et au Canada.
         </p>
         <p>
           Veuillez remplir ce formulaire afin d'enregistrer votre entreprise et vous conformer
-          à la réglementation en vigueur pour l'envoi d'emails transactionnels via un numéro Toll-Free.
+          à la réglementation en vigueur pour l'envoi de SMS transactionnels via un numéro Toll-Free.
         </p>
         <UiAlert variant="destructive" class="mt-3">
           <p class="font-medium">
-            Sans enregistrement conforme, vos emails transactionnels à destination des États-Unis
+            Sans enregistrement conforme, vos SMS transactionnels à destination des États-Unis
             ou du Canada ne pourront pas être envoyés et seront suspendus.
           </p>
         </UiAlert>
